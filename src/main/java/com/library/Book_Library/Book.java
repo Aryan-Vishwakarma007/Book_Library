@@ -23,6 +23,14 @@ public class Book {
     public Book_Entry bookEntryId(@PathVariable int myids){
         return  Book_Entry_Map.get(myids);
     }
+    @DeleteMapping("delete/{Del_Id}")
+    public String BookEntryDelete(@PathVariable int Del_Id){
+        if (Book_Entry_Map.containsKey(Del_Id)){
+            Book_Entry_Map.remove(Del_Id);
+            return "id "+Del_Id+" is removed";
+        }
+        return "not found :(";
+    }
 
 
 
