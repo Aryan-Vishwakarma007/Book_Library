@@ -19,10 +19,12 @@ public class Book {
         Book_Entry_Map.put(Mydata.getId(), Mydata);
         return "Added";
     }
+
     @GetMapping("id/{myids}")
     public Book_Entry bookEntryId(@PathVariable int myids){
         return  Book_Entry_Map.get(myids);
     }
+
     @DeleteMapping("delete/{Del_Id}")
     public String BookEntryDelete(@PathVariable int Del_Id){
         if (Book_Entry_Map.containsKey(Del_Id)){
@@ -32,9 +34,9 @@ public class Book {
         return "not found :(";
     }
 
-
-
-
-
+    @PutMapping("/update/{upd_id}")
+    public Book_Entry  BookEntryDelete(@PathVariable int upd_id, @RequestBody Book_Entry Mydata){
+        return Book_Entry_Map.put(upd_id, Mydata);
+    }
 
 }
