@@ -1,6 +1,7 @@
 package com.library.Book_Library;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +18,11 @@ public class Book {
     @GetMapping
     public List<Book_Entry> bookEntry(){
         return  new ArrayList<>(Book_Entry_Map.values());
+    }
+    @RequestMapping
+    public String new_entry(@RequestBody Book_Entry Mydata){
+        Book_Entry_Map.put(Mydata.getId(), Mydata);
+        return "Added";
     }
 
 
