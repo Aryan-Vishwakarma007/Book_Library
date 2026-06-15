@@ -19,11 +19,18 @@ public class Book {
     public List<Book_Entry> bookEntry(){
         return  new ArrayList<>(Book_Entry_Map.values());
     }
+
     @RequestMapping
     public String new_entry(@RequestBody Book_Entry Mydata){
         Book_Entry_Map.put(Mydata.getId(), Mydata);
         return "Added";
     }
+    @GetMapping("id/{myids}")
+    public List<Book_Entry> bookEntryId(){
+        return new ArrayList<>(Book_Entry_Map.get(myids));
+    }
+
+
 
 
 
