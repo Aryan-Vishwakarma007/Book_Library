@@ -1,14 +1,8 @@
 package com.library.Book_Library;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/book")
@@ -26,8 +20,8 @@ public class Book {
         return "Added";
     }
     @GetMapping("id/{myids}")
-    public List<Book_Entry> bookEntryId(){
-        return new ArrayList<>(Book_Entry_Map.get(myids));
+    public Book_Entry bookEntryId(@PathVariable int myids){
+        return  Book_Entry_Map.get(myids);
     }
 
 
